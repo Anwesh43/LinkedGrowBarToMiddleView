@@ -24,3 +24,33 @@ fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 fun Float.sinify() : Float = Math.sin(this * Math.PI).toFloat()
+
+fun Canvas.drawGrowMiddleBar(i : Int, sf : Float, w : Float, h : Float, paint : Paint) {
+    val sf1 : Float = sf.divideScale(0, 2)
+    val sf1i : Float = sf1.divideScale(i, bars)
+    val sf1i1 : Float = sf1i.divideScale(0, 2)
+    val sf1i2 : Float = sf1i.divideScale(1, 2)
+    val gap : Float = w / bars
+    val size : Float = gap * sf1i2
+    save()
+    translate(-w / 2 + gap * i + gap / 2, (h / 2 - gap / 2) * (1f - sf1i1))
+    drawRect(RectF(-size / 2, size / 2, size / 2, size / 2), paint)
+    restore()
+}
+
+fun Canvas.drawGrowMiddleBars(sf : Float, w : Float, h : Float, paint : Paint) {
+    for (i in 0..(bars - 1)) {
+        drawGrowMiddleBar(i, sf, w, h, paint)
+    }
+}
+
+fun Canvas.drawGMBNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    val sf : Float = scale.sinify()
+    save()
+    translate(w / 2, h / 2)
+    rotate(rot * sf.divideScale(1, 2))
+    drawGrowMiddleBars(sf, w, h, paint)
+    restore()
+}
