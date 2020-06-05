@@ -204,4 +204,13 @@ class GrowBarMiddleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : GrowBarMiddleView {
+            val view : GrowBarMiddleView = GrowBarMiddleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
