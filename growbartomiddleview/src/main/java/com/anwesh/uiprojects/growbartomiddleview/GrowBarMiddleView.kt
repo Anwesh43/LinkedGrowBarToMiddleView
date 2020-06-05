@@ -31,10 +31,10 @@ fun Canvas.drawGrowMiddleBar(i : Int, sf : Float, w : Float, h : Float, paint : 
     val sf1i1 : Float = sf1i.divideScale(0, 2)
     val sf1i2 : Float = sf1i.divideScale(1, 2)
     val gap : Float = w / bars
-    val size : Float = gap * sf1i2
+    val size : Float = gap * sf1i1
     save()
-    translate(-w / 2 + gap * i + gap / 2, (h / 2 - gap / 2) * (1f - sf1i1))
-    drawRect(RectF(-size / 2, size / 2, size / 2, size / 2), paint)
+    translate(-w / 2 + gap * i + gap / 2, (h / 2 - gap / 2) * (1f - sf1i2))
+    drawRect(RectF(-size / 2, -size / 2, size / 2, size / 2), paint)
     restore()
 }
 
@@ -48,6 +48,7 @@ fun Canvas.drawGMBNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     val sf : Float = scale.sinify()
+    paint.color = Color.parseColor(colors[i])
     save()
     translate(w / 2, h / 2)
     rotate(rot * sf.divideScale(1, 2))
