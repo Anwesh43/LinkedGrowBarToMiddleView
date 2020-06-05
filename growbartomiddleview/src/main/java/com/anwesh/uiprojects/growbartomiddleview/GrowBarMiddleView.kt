@@ -181,4 +181,27 @@ class GrowBarMiddleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : GrowBarMiddleView) {
+
+        private val gbm : GrowBarToMiddle = GrowBarToMiddle(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            gbm.draw(canvas, paint)
+            animator.animate {
+                gbm.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            gbm.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
