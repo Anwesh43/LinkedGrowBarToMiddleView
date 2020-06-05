@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LinkedGrowBarToMiddleView.iml" filepath="$PROJECT_DIR$/LinkedGrowBarToMiddleView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/growbartomiddleview/growbartomiddleview.iml" filepath="$PROJECT_DIR$/growbartomiddleview/growbartomiddleview.iml" />
+    </modules>
+  </component>
+</project>
